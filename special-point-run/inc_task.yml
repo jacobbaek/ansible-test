@@ -1,0 +1,4 @@
+---
+- name: print message for include task.
+  debug:
+    msg: include task

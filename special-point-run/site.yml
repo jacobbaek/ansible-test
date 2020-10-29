@@ -1,0 +1,34 @@
+---
+- hosts: all
+  gather_facts: no
+
+  tasks:
+  - name: print debug always
+    ansible.builtin.debug:
+      msg: "always run"
+    tags:
+    - always
+  
+  - name: print debug for tag number 1
+    ansible.builtin.debug:
+      msg: "runs with tag1 tag"
+    tags:
+    - tag1
+  
+  - name: print debug for tag number 2
+    ansible.builtin.debug:
+      msg: "runs with tag2 tag"
+    tags:
+    - tag2
+
+  - include: inc_task.yml
+    tags:
+    - tag3
+
+  roles:
+    - name: print debug for test1 role
+      role: roles/test1
+      tags:
+      - tag4
+    - name: print debug for test2 role
+      role: roles/test2

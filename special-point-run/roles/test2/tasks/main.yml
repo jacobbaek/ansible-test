@@ -1,0 +1,4 @@
+---
+- name: print message with test2 role
+  debug:
+    msg: run as test2 role.
